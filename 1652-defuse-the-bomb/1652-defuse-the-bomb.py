@@ -1,33 +1,29 @@
 class Solution:
     def decrypt(self, code: List[int], k: int) -> List[int]:
+        
         res = []
         
-        for i in range(len(code)):
+        for c in range(len(code)):
             
             if k > 0:
-                interim_sum = 0
-                j = i+1
+                curr_sum = 0
                 m = k
+                j = c + 1
                 while m:
-                    interim_sum += code[j%len(code)]
+                    curr_sum += code[j%len(code)]
                     j += 1
                     m -= 1
-                res.append(interim_sum)
+                res.append(curr_sum)
             elif k == 0:
                 res.append(0)
-                
             else:
+                curr_sum = 0
                 m = k
-                j = i-1
-                iterim_sum = 0
+                j = c - 1
                 while m:
-                    iterim_sum += code[j%len(code)]
-                    m += 1
+                    curr_sum += code[j%len(code)]
                     j -= 1
-                res.append(iterim_sum)
+                    m += 1
+                res.append(curr_sum)
         return res
-                
-                    
-                
-                
         
