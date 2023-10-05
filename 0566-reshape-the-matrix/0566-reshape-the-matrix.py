@@ -3,26 +3,22 @@ class Solution:
         row_len = len(mat)
         col_len = len(mat[0])
         
-        if r*c != row_len*col_len:
+        if (r*c) != row_len*col_len:
             return mat
         
         flat = []
-        for row in mat:
-            for col in row:
-                flat.append(col)
-        print(flat)
         
-        i = 0
+        for row in mat:
+       
+            for item in row:
+                flat.append(item)
+                
         res = []
-        for row in range(r):
+        k = 0
+        for i in range(r):
             temp = []
-            for col in range(c):
-                temp.append(flat[i])
-                i+=1
+            for j in range(c):
+                temp.append(flat[k])
+                k += 1
             res.append(temp)
         return res
-            
-            
-        
-       
-        
