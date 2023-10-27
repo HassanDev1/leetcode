@@ -3,16 +3,17 @@ class Solution:
         
         seen = {}
         l = 0
-        max_len = 0
+        longest = 0
         
         for r,char in enumerate(s):
             if char in seen:
                 l = max(l,seen[char]+1)
+                
+            longest = max(longest,r -l +1)
             seen[char] = r
-            max_len = max(max_len,r-l+1)
             
-        return max_len
-            
-            
-            
+        return longest
+        
+    
+        
         
