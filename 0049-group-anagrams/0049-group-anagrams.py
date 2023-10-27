@@ -1,12 +1,11 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-
-        hmap = defaultdict(list)
-
-        for c in strs:
-            sorted_string = "".join(sorted(c))
-            hmap[sorted_string].append(c)
-
-      
-        return hmap.values()
+        
+        res = defaultdict(list)
+        
+        for ele in strs:
+            sorted_ele = "".join(sorted(ele))
+            res[sorted_ele].append(ele)
+            
+        return res.values()
         
