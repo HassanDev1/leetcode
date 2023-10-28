@@ -2,19 +2,14 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
+        s_sorted = "".join(sorted(s))
+        t_sorted = "".join(sorted(t))
         
-        count_s = Counter(s)
-        count_t = Counter(t)
-        
-        for c in s:
-            if c in count_t:
-                count_t[c] -= 1
-                
-        print(count_t)
-        for v in count_t.values():
-            
-            if v != 0:
+        l=0
+        for r in range(len(s_sorted)):
+            if s_sorted[r] != t_sorted[l]:
                 return False
+            l += 1
+            
         return True
-        
         
