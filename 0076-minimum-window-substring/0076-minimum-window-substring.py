@@ -1,29 +1,29 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         
-        t_freq = Counter(t)
-        window_s = {}
-        min_len = float("inf")
-        count = 0
         min_window = ""
+        min_len = float("inf")
+        l = 0
+        count = 0
         
-        left = 0
-        for right in range(len(s)):
-            if s[right] in t_freq:
-                window_s[s[right]] = 1 + window_s.get(s[right],0)
-                
-                if window_s[s[right]] <= t_freq[s[right]]:
+        t_dict = Counter(t)
+        s_dict = {}
+        
+        for r in range(len(s)):
+            if s[r] in t_dict:
+                s_dict[s[r]] = s_dict.get(s[r],0) + 1
+                if s_dict[s[r]] <= t_dict[s[r]]:
                     count += 1
-                
             while count == len(t):
-                if right - left + 1 < min_len:
-                    min_len = right-left + 1
-                    min_window = s[left:right+1]
-                if s[left] in t_freq:
-                    window_s[s[left]] -= 1
-                    if window_s[s[left]] < t_freq[s[left]]:
+                if r -l + 1 < min_len:
+                    min_len = r - l + 1
+                    min_window = s[l:r+1]
+                #shrink my window
+                if s[l] in t_dict:
+                    s_dict[s[l]] -= 1
+                    if s_dict[s[l]] < t_dict[s[l]]:
                         count -= 1
-                    
-                left += 1
+                l += 1
         return min_window
+        
         
