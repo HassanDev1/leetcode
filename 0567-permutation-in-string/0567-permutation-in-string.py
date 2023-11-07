@@ -1,24 +1,28 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+        
         if len(s1) > len(s2):
             return False
-        
-        count_s1 = Counter(s1)
-        count_s2 = Counter(s2[:len(s1)])
-        
+        s1_map = Counter(s1) 
+        s2_map = {}
         l = 0
-        for r in range(len(s1),len(s2)):
-            if count_s1 == count_s2:
-                return True
-            count_s2[s2[r]] += 1
+        
+        for r in range(len(s2)):
+            s2_map[s2[r]] = 1 + s2_map.get(s2[r],0)
             
-            if r -l >= len(s1):
-                if count_s2[s2[l]] == 1:
-                    del count_s2[s2[l]]
+            if r - l+1 >= len(s1):
+                if s2_map == s1_map:
+                    return True
                 else:
-                    count_s2[s2[l]] -= 1
-                
+                    if s2_map[s2[l]] == 1:
+                        del s2_map[s2[l]]
+                    else:
+                        s2_map[s2[l]] -= 1
                 l += 1
-                
-        return count_s1 == count_s2
+                        
+        return False
+            
+            
+            
+        
         
