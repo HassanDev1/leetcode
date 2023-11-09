@@ -3,26 +3,23 @@ class Solution:
         
         if len(s1) > len(s2):
             return False
-        s1_map = Counter(s1) 
-        s2_map = {}
+        
+        freq = Counter(s1)
         l = 0
+        window = {}
         
         for r in range(len(s2)):
-            s2_map[s2[r]] = 1 + s2_map.get(s2[r],0)
+            window[s2[r]] = window.get(s2[r],0) + 1
             
-            if r - l+1 >= len(s1):
-                if s2_map == s1_map:
+            if r-l+1 >= len(s1):
+                if window == freq:
                     return True
+                if window[s2[l]] > 1:
+                    window[s2[l]] -= 1
                 else:
-                    if s2_map[s2[l]] == 1:
-                        del s2_map[s2[l]]
-                    else:
-                        s2_map[s2[l]] -= 1
+                    del window[s2[l]]
                 l += 1
-                        
+                
         return False
             
-            
-            
-        
         
