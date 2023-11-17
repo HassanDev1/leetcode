@@ -6,7 +6,7 @@ class Solution:
         
         for r in range(len(nums)):
             
-            while q and q[0] < r-k+1:
+            if q and q[0] < r-k+1:
                 q.popleft()
             while q and nums[q[-1]] < nums[r]:
                 q.pop()
