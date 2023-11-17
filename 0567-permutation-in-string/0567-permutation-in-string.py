@@ -1,25 +1,28 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         
-        if len(s1) > len(s2):
-            return False
+        have = Counter(s1)
+        need =  {}
         
-        freq = Counter(s1)
-        window = {}
         l = 0
         
-        for i,c in enumerate(s2):
-            window[c] = window.get(c,0) + 1
+        for r in range(len(s2)):
+            need[s2[r]] = 1 + need.get(s2[r],0)
             
-            if i - l + 1 >= len(s1):
-                if window == freq:
+            if r -l +1 == len(s1):
+                
+                if need == have:
                     return True
                 else:
-                    if window[s2[l]] == 1:
-                        del window[s2[l]]
+                    if need[s2[l]] == 1:
+                        del need[s2[l]]
                     else:
-                        window[s2[l]] -= 1
+                        need[s2[l]] -= 1
                 l += 1
+                
         return False
-            
+        
+        
+        
+        
         
