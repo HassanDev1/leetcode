@@ -5,9 +5,9 @@ class Solution:
         
         for i,num in enumerate(nums):
             diff = target - num
-            
-            if diff  in hmap:
+            if diff in hmap:
                 return [hmap[diff],i]
-            else:
-                hmap[num] = i
+            hmap[num] = i
+            
+        
         
