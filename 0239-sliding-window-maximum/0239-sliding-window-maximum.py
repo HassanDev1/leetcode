@@ -4,16 +4,16 @@ class Solution:
         q = deque()
         res = []
         
-        for i in range(len(nums)):
-            while q and nums[q[-1]] < nums[i]:
+        for r in range(len(nums)):
+            
+            while q and q[0] < r-k+1:
+                q.popleft()
+            while q and nums[q[-1]] < nums[r]:
                 q.pop()
                 
-            while q and q[0] < i-k+1:
-                q.popleft()
-                
-            q.append(i)
+            q.append(r)
             
-            if i >= k-1:
+            if r >= k-1:
                 res.append(nums[q[0]])
                 
         return res
