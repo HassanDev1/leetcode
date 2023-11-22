@@ -6,14 +6,13 @@ class Solution:
         for c in s:
             if c in "([{":
                 stack.append(c)
+            elif not stack and c in ")]}":
+                return False
             else:
-                if stack:
-                    popped=  stack.pop()
-                    if popped == "(" and c != ")" or popped == "[" and c != "]" or popped == "{" and c != "}":
-                        return False
-                elif not stack and c in ")]}":
+                if c == ")" and stack[-1] != "(" or c == "]" and stack[-1] != "[" or c == "}" and stack[-1] != "{":
                     return False
-                    
-        return len(stack) == 0
+                else:
+                    stack.pop()
                 
+        return len(stack) == 0
         
