@@ -4,13 +4,12 @@ class Solution:
         stack = []
         res = [0]*len(temperatures)
         
-        for i in range(len(temperatures)):
-            
-            while stack and temperatures[stack[-1]] < temperatures[i]:
-                j = stack.pop()
-                res[j] = i-j
-            
-            stack.append(i)
+        for r in range(len(temperatures)):
+            while stack and temperatures[stack[-1]] < temperatures[r]:
+                l = stack.pop()
+                res[l] = r-l
+
+            stack.append(r)
             
         return res
         
