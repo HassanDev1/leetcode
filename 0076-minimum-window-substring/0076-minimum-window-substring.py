@@ -1,27 +1,33 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
+        if len(t) > len(s):
+            return ""
         
-        res = ""
-        have,need = 0,len(t)
-        l = 0
+        left = 0
         min_len = float("inf")
+        res = ""
+        freq = Counter(t)
         window = {}
-        seen = Counter(t)
+        have,need = 0,len(t)
         
-        for r in range(len(s)):
-            if s[r] in seen:
-                window[s[r]] = window.get(s[r],0)+1
-                
-                if window[s[r]] <= seen[s[r]]:
+        for right in range(len(s)):
+            if s[right] in freq:
+                window[s[right]] = window.get(s[right],0) + 1
+                if window[s[right]] <= freq[s[right]]:
                     have += 1
             while have == need:
-                if r -l +1 < min_len:
-                    min_len = r-l+1
-                    res = s[l:r+1]
-                if s[l] in seen:
-                    window[s[l]] -= 1
-                    if window[s[l]] < seen[s[l]]:
+                if right - left + 1 < min_len:
+                    min_len = right - left + 1
+                    res = s[left:right+1]
+                
+                if s[left] in freq:
+                    window[s[left]] -= 1
+                    if window[s[left]] < freq[s[left]]:
                         have -= 1
-                    
-                l += 1
+                            
+                left += 1
+                
         return res
+            
+            
+        
