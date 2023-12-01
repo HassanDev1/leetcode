@@ -1,10 +1,14 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         
-        min_ele = float("inf")
+        l,r =0,len(nums)-1
         
-        for num in nums:
-            min_ele = min(min_ele,num)
+        while l < r:
+            mid = l + (r-l)//2
             
-        return min_ele
+            if nums[mid] > nums[r]:
+                l = mid + 1
+            else:
+                r = mid
+        return nums[r]
         
