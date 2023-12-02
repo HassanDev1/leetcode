@@ -5,13 +5,14 @@ class StockSpanner:
         
 
     def next(self, price: int) -> int:
-        span = 1
         stack = self.monotonic_stack
         
-        while stack and stack[-1][0] <= price:
-            _,curr_span = stack.pop()
-            span += curr_span
-        stack.append((price,span))
+        span = 1
+        while  stack and stack[-1][1] <= price:
+            prev_span,prev_price = stack.pop()
+            span += prev_span
+        stack.append((span,price))
+        
         return span
         
 
