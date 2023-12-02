@@ -1,16 +1,18 @@
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
         
-        stack = []
-        fleet = [(p,(target-p)/s) for p,s in zip(position,speed)]
-        
-        fleet.sort(key=lambda x:x[0], reverse=True)
-        
-        for p,t in fleet:
+        fleets = []
+        for p,s in zip(position,speed):
+            fleets.append((p,(target-p)/s))
             
-            while not stack or stack[-1][1] < t:
-                stack.append((p,t))
-                
-                
+        fleets.sort(key=lambda x:x[0],reverse=True)
+        
+        stack = []
+        for p,t in fleets:
+          
+            while not stack or stack[-1] < t:
+                stack.append(t)
+            
+        
         return len(stack)
         
