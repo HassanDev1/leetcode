@@ -9,14 +9,17 @@ class Solution:
                 return False
             return True
         
-        l,r=1,max(piles)
+        
+        l,r= 1,max(piles)
         
         while l < r:
             mid = l + (r-l)//2
             
             if feasible(mid):
                 r = mid
+                
             else:
-                l = mid+1
+                l = mid + 1
+                
         return l
         
