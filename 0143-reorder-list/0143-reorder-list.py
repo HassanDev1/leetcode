@@ -9,18 +9,18 @@ class Solution:
         Do not return anything, modify head in-place instead.
         """
         
-        arr = []
+        node = []
         curr = head
-        while curr:
-            arr.append(curr)
-            curr = curr.next
         
-        l,r = 0,len(arr)-1
+        while curr:
+            node.append(curr)
+            curr = curr.next
+            
+        l,r = 0, len(node)-1
         
         while l < r:
-            arr[l].next = arr[r]
+            node[l].next = node[r]
             l += 1
-            arr[r].next = arr[l]
+            node[r].next = node[l]
             r -= 1
-        arr[l].next = None
-        
+        node[l].next = None
