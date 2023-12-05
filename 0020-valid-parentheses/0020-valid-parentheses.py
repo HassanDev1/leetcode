@@ -8,11 +8,10 @@ class Solution:
                 stack.append(c)
             elif not stack and c in ")]}":
                 return False
+            elif stack and stack[-1]=="(" and c != ")" or stack[-1]=="[" and c != "]" or stack[-1]=="{" and c != "}":
+                return False
             else:
-                if stack and stack[-1] != "(" and c ==")"  or c =="]" and stack[-1] != "[" or c =="}" and stack[-1] != "{": 
-                    return False
-                else:
-                    stack.pop()
-                    
+                stack.pop()
+                
         return len(stack) == 0
         
