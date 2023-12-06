@@ -13,8 +13,8 @@ class Solution:
             n -= 1
             
         while r:
-            l = l.next
+            l =l.next
             r = r.next
         l.next = l.next.next
-        
         return dummy.next
+            
