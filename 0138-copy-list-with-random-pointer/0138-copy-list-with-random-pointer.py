@@ -11,8 +11,8 @@ class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         
         oldToCopy = {None:None}
-        
         curr = head
+        
         while curr:
             copy = Node(curr.val)
             oldToCopy[curr] = copy
@@ -26,4 +26,5 @@ class Solution:
             curr = curr.next
             
         return oldToCopy[head]
+            
         
