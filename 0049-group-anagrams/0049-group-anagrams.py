@@ -1,14 +1,14 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         
-        hmap = {}
+        anagram = {}
         
-        for c in strs:
-            sorted_str = "".join(sorted(c))
-            if sorted_str not in hmap:
-                hmap[sorted_str] = [c]
+        for s in strs:
+            sort_s = "".join(sorted(s))
+            if sort_s not in anagram:
+                anagram[sort_s] = [s]
             else:
-                hmap[sorted_str].append(c)
+                anagram[sort_s].append(s)
                 
-        return hmap.values()
+        return anagram.values()
         
