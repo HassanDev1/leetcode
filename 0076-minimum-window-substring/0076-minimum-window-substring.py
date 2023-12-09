@@ -3,31 +3,31 @@ class Solution:
         if len(t) > len(s):
             return ""
         
-        left = 0
-        min_len = float("inf")
         res = ""
         freq = Counter(t)
-        window = {}
-        have,need = 0,len(t)
+        l = 0
         
-        for right in range(len(s)):
-            if s[right] in freq:
-                window[s[right]] = window.get(s[right],0) + 1
-                if window[s[right]] <= freq[s[right]]:
+        window = {}
+        min_str = float("inf")
+        have = 0
+        need = len(t)
+        
+        for r,c in enumerate(s):
+            if c in freq:
+                window[c] = window.get(c,0)+1
+                if window[c] <= freq[c]:
                     have += 1
             while have == need:
-                if right - left + 1 < min_len:
-                    min_len = right - left + 1
-                    res = s[left:right+1]
-                
-                if s[left] in freq:
-                    window[s[left]] -= 1
-                    if window[s[left]] < freq[s[left]]:
+                if r-l+1 < min_str:
+                    min_str = r-l+1
+                    res = s[l:r+1]
+                    
+                if s[l] in freq:
+                    window[s[l]] -= 1
+                    if window[s[l]] < freq[s[l]]:
                         have -= 1
-                            
-                left += 1
-                
+                    
+                l += 1
         return res
-            
-            
+                
         
