@@ -6,13 +6,11 @@ class Solution:
         l = 0
         seen = {}
         
-        for r in range(len(s)):
-            if s[r] in seen:
-                l = max(l,seen[s[r]]+1)
+        for r,c in enumerate(s):
+            if c in seen:
+                l = max(l,seen[c]+1)
             longest = max(longest,r-l+1)
-            seen[s[r]] = r  
-            
-            
+            seen[c] = r
         return longest
-            
+        
         
