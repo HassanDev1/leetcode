@@ -8,21 +8,20 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        new_list = []
+        
+        nodes = []
         curr = head
         while curr:
-            new_list.append(curr)
+            nodes.append(curr)
             curr = curr.next
             
-        l,r =0,len(new_list)-1
+        l,r =0,len(nodes)-1
         
         while l < r:
-            new_list[l].next = new_list[r]
+            nodes[l].next = nodes[r]
             l += 1
-            new_list[r].next = new_list[l]
+            nodes[r].next = nodes[l]
             r -= 1
             
-        new_list[l].next = None
-        
-            
+        nodes[l].next = None
         
