@@ -1,26 +1,25 @@
 class TimeMap:
 
     def __init__(self):
-        self.time_stamp = defaultdict(list)
+        self.cache = defaultdict(list)
         
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        self.time_stamp[key].append((value,timestamp))
-        
+        self.cache[key].append((value,timestamp))
 
     def get(self, key: str, timestamp: int) -> str:
-        items = self.time_stamp[key]
-        l,r =0,len(items)-1
         res = ""
+        items = self.cache[key]
+        l,r = 0,len(items)-1
+        
         while l <= r:
-            mid = l + (r-l)//2
+            mid = l+ (r-l)//2
             if items[mid][1] <= timestamp:
                 res = items[mid][0]
-                l = mid +1
+                l = mid + 1
             else:
-                r = mid-1
+                r = mid - 1
         return res
-            
         
 
 
