@@ -9,17 +9,28 @@ class Solution:
         
         if not root:
             return []
-        res= []
-        stack = []
         
-        while root or stack:
-            while root:
-                stack.append(root)
-                root = root.left
-                
-            root = stack.pop()
-            res.append(root.val)
-            root = root.right
+        stack = [(1,root)]
+        inorder = []
+        
+        while stack:
+            num,node = stack.pop()
             
-        return res
-        
+            if num == 1:
+                num += 1
+                stack.append((num,node))
+                if node.left:
+                    stack.append((1,node.left))
+            elif num == 2:
+                num += 1
+                stack.append((num,node))
+                inorder.append(node.val)
+                if node.right:
+                    stack.append((1,node.right))
+                    
+                    
+        return inorder
+                    
+                    
+                
+                    
