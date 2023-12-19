@@ -6,9 +6,9 @@
 #         self.right = right
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root:
-            return
         
+        if not root:
+            return 
         q = deque([root])
         
         while q:
@@ -18,4 +18,6 @@ class Solution:
                 node.left,node.right = node.right,node.left
                 q.append(node.left)
                 q.append(node.right)
+                
         return root
+        
