@@ -7,21 +7,25 @@
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         
-        if (not p and q) or (p and not q):
+        if not p and q or not q and p:
             return False
         
-        q = deque([(p,q)])
+        dq = deque([(p,q)])
         
-        while q:
-            n1,n2 = q.pop()
+        while dq:
+            size = len(dq)
             
-            if not n1 and not n2:
-                continue
-            if not n1 and n2 or n1 and not n2:
-                return False
-            if n1.val != n2.val:
-                return False
-            q.append((n1.left,n2.left))
-            q.append((n1.right,n2.right))
+            for _ in range(size):
+                p_node,q_node = dq.pop()
+                
+                if p_node and not q_node or q_node and not p_node:
+                    return False
+                
+                if p_node and q_node and p_node.val != q_node.val:
+                    return False
+                if p_node and q_node:
+                    dq.append((p_node.left,q_node.left))
+                    dq.append((p_node.right,q_node.right))
+                    
         return True
         
