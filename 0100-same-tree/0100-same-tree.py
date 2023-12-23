@@ -6,8 +6,7 @@
 #         self.right = right
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        
-        if not p and q or not q and p:
+        if not p and q or p and not q:
             return False
         
         dq = deque([(p,q)])
@@ -16,16 +15,18 @@ class Solution:
             size = len(dq)
             
             for _ in range(size):
-                p_node,q_node = dq.pop()
+                n1,n2 = dq.pop()
                 
-                if p_node and not q_node or q_node and not p_node:
+                if n1 and not n2 or not n1 and n2:
                     return False
-                
-                if p_node and q_node and p_node.val != q_node.val:
+                if n1 and n2 and n1.val != n2.val:
                     return False
-                if p_node and q_node:
-                    dq.append((p_node.left,q_node.left))
-                    dq.append((p_node.right,q_node.right))
+                if n1 and n2:
+                    dq.append((n1.left,n2.left))
+                  
+                    
+                    dq.append((n1.right,n2.right))
+                 
+                    
                     
         return True
-        
