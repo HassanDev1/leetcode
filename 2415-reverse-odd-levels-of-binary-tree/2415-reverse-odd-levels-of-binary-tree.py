@@ -6,35 +6,30 @@
 #         self.right = right
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return
         
-        
-        q  = deque([root])
+        q = deque([root])
         level = 0
-      
         
         while q:
-            
             size = len(q)
             if level %2 != 0:
-                l,r =0, size-1
+                l,r =0,len(q)-1
+                
                 while l < r:
                     q[l].val,q[r].val = q[r].val,q[l].val
                     l += 1
                     r -= 1
+            
             for _ in range(size):
                 node = q.popleft()
+                
                 
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-           
-        
             level += 1
-            
-            
-               
-        return root
                 
-            
-        
+        return root
