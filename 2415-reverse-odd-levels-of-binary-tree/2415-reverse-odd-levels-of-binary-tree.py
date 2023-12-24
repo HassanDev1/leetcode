@@ -9,27 +9,26 @@ class Solution:
         if not root:
             return
         
-        q = deque([root])
+        dq = deque([root])
         level = 0
         
-        while q:
-            size = len(q)
+        while dq:
+            
+            size = len(dq)
             if level %2 != 0:
-                l,r =0,len(q)-1
-                
+                l,r = 0,size-1
                 while l < r:
-                    q[l].val,q[r].val = q[r].val,q[l].val
+                    dq[l].val,dq[r].val = dq[r].val,dq[l].val
                     l += 1
                     r -= 1
             
             for _ in range(size):
-                node = q.popleft()
-                
-                
+                node = dq.popleft()
                 if node.left:
-                    q.append(node.left)
+                    dq.append(node.left)
                 if node.right:
-                    q.append(node.right)
+                    dq.append(node.right)
+                    
             level += 1
-                
         return root
+                
