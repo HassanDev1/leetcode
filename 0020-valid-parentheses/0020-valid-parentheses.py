@@ -4,16 +4,15 @@ class Solution:
         stack = []
         
         for c in s:
-            if c in "({[":
+            if c in "([{":
                 stack.append(c)
                 
-            elif not stack and c in ")}]":
+            elif not stack and c in ")]}":
                 return False
             else:
-                if stack and stack[-1] != "(" and c ==")" or stack[-1] != "[" and c =="]" or stack[-1] != "{" and c =="}":
+                if stack and c == ")" and stack[-1] != "(" or c == "]" and stack[-1] != "[" or c == "}" and stack[-1] != "{":
                     return False
-                else:
-                    stack.pop()
-                    
-        return len(stack) == 0
+                stack.pop()
+                
+        return not stack
         
