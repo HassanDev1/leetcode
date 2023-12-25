@@ -8,15 +8,14 @@ class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         
         res = [0]
-        
-        def dfs(node):
+        def findHeight(node):
             if not node:
                 return 0
-            lh = dfs(node.left)
-            rh = dfs(node.right)
+            lh = findHeight(node.left)
+            rh = findHeight(node.right)
             res[0] = max(res[0],lh+rh)
-            
             return 1 + max(lh,rh)
-        dfs(root)
+        findHeight(root)
         return res[0]
+            
         
