@@ -20,11 +20,11 @@ class Solution:
             
             for _ in range(size):
                 node = q.popleft()
-                
-                if node:
-                    if compare(node,subRoot):
-                        return True
+                if compare(node,subRoot):
+                    return True
+                if node.left:
                     q.append(node.left)
+                if node.right:
                     q.append(node.right)
                     
         return False
