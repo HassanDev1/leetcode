@@ -11,16 +11,16 @@ class Solution:
         
         def dfs(node):
             if not node:
-                return
+                return 0
             heappush(heap,node.val)
             
             dfs(node.left)
             dfs(node.right)
+            
         dfs(root)
-       
+        
         for _ in range(k-1):
             heappop(heap)
             
         return heap[0]
-            
         
