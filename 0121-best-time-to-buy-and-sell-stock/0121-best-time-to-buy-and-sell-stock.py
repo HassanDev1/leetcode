@@ -5,9 +5,11 @@ class Solution:
         max_profit = 0
         
         for r in range(len(prices)):
+            
             if prices[r] < prices[l]:
-                l = r
+                l  = r
             max_profit = max(max_profit,prices[r]-prices[l])
             
         return max_profit
+            
         
