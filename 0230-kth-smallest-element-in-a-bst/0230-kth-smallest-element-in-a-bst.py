@@ -13,11 +13,10 @@ class Solution:
             if not node:
                 return 0
             heappush(heap,node.val)
-            
             dfs(node.left)
             dfs(node.right)
             
-        dfs(root)
+        dfs(root) 
         
         for _ in range(k-1):
             heappop(heap)
