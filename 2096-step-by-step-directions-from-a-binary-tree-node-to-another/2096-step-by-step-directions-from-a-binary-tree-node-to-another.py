@@ -16,14 +16,13 @@ class Solution:
             right = getlca(node.right,p,q)
             if left and right:
                 return node
-            if left: return left
-            if right: return right
-            
-        root = getlca(root,startValue,destValue)  
-        
+            if left:
+                return left
+            if right:
+                return right
+        root = getlca(root,startValue,destValue)
         stack = [(root,"")]
         sp = dp = ""
-        
         while stack:
             node,path = stack.pop()
             if node.val == startValue:
@@ -31,8 +30,10 @@ class Solution:
             if node.val == destValue:
                 dp = path
             if node.left:
-                stack.append((node.left,path+"L"))
+                stack.append((node.left,path +"L"))
             if node.right:
                 stack.append((node.right,path+"R"))
                 
         return "U"*len(sp)+dp
+            
+        
