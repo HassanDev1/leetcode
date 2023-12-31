@@ -6,11 +6,13 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        
         max_gain = [float("-inf")]
         
         def get_max(node):
             if not node:
                 return 0
+            
             left_gain = max(get_max(node.left),0)
             right_gain = max(get_max(node.right),0)
             path = node.val + left_gain + right_gain
