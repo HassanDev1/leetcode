@@ -9,21 +9,23 @@ class Solution:
         
         if not root:
             return
+        
         q = deque([root])
         res = []
         
         while q:
             size = len(q)
-            temp = None
+            
+            tmp = None
+            
             for _ in range(size):
                 node = q.popleft()
-                temp = node.val
+                tmp = node.val
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            res.append(temp)
+            res.append(tmp)
             
         return res
-            
         
