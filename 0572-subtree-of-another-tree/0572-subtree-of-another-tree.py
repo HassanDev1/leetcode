@@ -7,12 +7,13 @@
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         
-        def compare(main,sub):
-            if not main and not sub:
+        def compare(p,q):
+            if not p and not q:
                 return True
-            if not main or not sub or main.val != sub.val:
+            if not p or not q or p.val != q.val:
                 return False
-            return compare(main.left,sub.left) and compare(main.right,sub.right)
+            return compare(p.left,q.left) and compare(p.right,q.right)
+            
         
         q = deque([root])
         
@@ -29,3 +30,4 @@ class Solution:
                     q.append(node.right)
                     
         return False
+        
