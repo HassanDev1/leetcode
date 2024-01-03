@@ -1,6 +1,8 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         
+        
+        l,r = 1,max(piles)
         def feasible(mid):
             total = 0
             for pile in piles:
@@ -9,8 +11,6 @@ class Solution:
                 return True
             return False
         
-        l,r = 1,max(piles)
-        
         while l < r:
             mid = l + (r-l)//2
             
@@ -18,6 +18,5 @@ class Solution:
                 l = mid + 1
             else:
                 r = mid
-                
         return l
         
