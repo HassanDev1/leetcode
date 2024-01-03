@@ -11,11 +11,10 @@ class Solution:
             if not node:
                 return 0
             lh = dfs(node.left)
-            if lh == -1:return -1
+            if lh == -1: return -1
             rh = dfs(node.right)
-            if rh == -1 : return -1
+            if rh == -1: return -1
             if abs(rh-lh) > 1:
                 return -1
-            return 1 + max(rh,lh)
+            return 1 + max(lh,rh)
         return dfs(root) != -1
-        
