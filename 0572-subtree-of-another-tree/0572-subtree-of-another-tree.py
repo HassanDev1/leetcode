@@ -10,10 +10,9 @@ class Solution:
         def compare(p,q):
             if not p and not q:
                 return True
-            if not p or not q or p.val != q.val:
+            if not p and q or p and not q or p.val != q.val:
                 return False
             return compare(p.left,q.left) and compare(p.right,q.right)
-            
         
         q = deque([root])
         
@@ -30,4 +29,3 @@ class Solution:
                     q.append(node.right)
                     
         return False
-        
