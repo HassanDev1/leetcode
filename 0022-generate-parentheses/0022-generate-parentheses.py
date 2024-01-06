@@ -2,21 +2,18 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
         stack = []
-        
-        def generate(openC,closeC):
-            if closeC == openC == n:
+        def generate(opCount,clClount):
+            if clClount == opCount == n:
                 res.append("".join(stack))
-                
-            if openC < n:
+                return
+            if opCount < n:
                 stack.append("(")
-                generate(openC+1,closeC)
+                generate(opCount + 1,clClount)
                 stack.pop()
-                
-            if closeC < openC:
+            if clClount < opCount:
                 stack.append(")")
-                generate(openC,closeC+1)
+                generate(opCount,clClount+1)
                 stack.pop()
-                
         generate(0,0)
         return res
                 
