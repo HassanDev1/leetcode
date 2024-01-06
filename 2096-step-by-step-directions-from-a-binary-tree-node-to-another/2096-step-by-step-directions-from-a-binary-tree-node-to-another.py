@@ -11,33 +11,35 @@ class Solution:
         def get_lca(node,p,q):
             if not node:
                 return
-            
             if node.val == p or node.val == q:
                 return node
-            ln = get_lca(node.left,p,q)
-            rn = get_lca(node.right,p,q)
-            
-            if ln and rn:
+            left = get_lca(node.left,p,q)
+            right = get_lca(node.right,p,q)
+            if left and right:
                 return node
-            if ln:
-                return ln
-            if rn:
-                return rn
-        node = get_lca(root,startValue,destValue)
-        stack = [(node,"")]
+            if left:
+                return left
+            if right:
+                return right
+        root = get_lca(root,startValue,destValue)
+        
         sp = dp = ""
+        stack = [(root,"")]
+        
         while stack:
-            root,path = stack.pop()
+            node,path = stack.pop()
             
-            if root.val == startValue:
+            if node.val == startValue:
                 sp = path
-            if root.val == destValue:
+            if node.val == destValue:
                 dp = path
-            if root.left:
-                stack.append((root.left,path+"L"))
-            if root.right:
-                stack.append((root.right,path+"R"))
-                
+            if node.left:
+                stack.append((node.left,path +"L"))
+            if node.right:
+                stack.append((node.right,path+"R"))
+       
+            
         return "U"*len(sp)+dp
+            
             
             
