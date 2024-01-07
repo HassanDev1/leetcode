@@ -6,7 +6,6 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        
         heap = []
         
         def dfs(node):
@@ -22,4 +21,3 @@ class Solution:
             heappop(heap)
             
         return heap[0]
-        
