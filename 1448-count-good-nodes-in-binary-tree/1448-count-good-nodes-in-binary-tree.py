@@ -8,10 +8,9 @@ class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         
         count = [0]
-        
         def dfs(node,prev):
             if not node:
-                return
+                return 0
             if prev <= node.val:
                 count[0] += 1
                 prev = node.val
