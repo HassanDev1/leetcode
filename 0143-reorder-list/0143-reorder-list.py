@@ -23,3 +23,4 @@ class Solution:
             r -= 1
             
         nodes[l].next = None
+        
