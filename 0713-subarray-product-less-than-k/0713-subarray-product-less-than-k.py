@@ -6,12 +6,10 @@ class Solution:
         pdt = 1
         count = 0
         l = 0
-        
-        for r in range(len(nums)) :
+        for r in range(len(nums)):
             pdt *= nums[r]
-            
             while pdt >= k:
-                pdt //= nums[l]
+                pdt /=nums[l]
                 l += 1
             count += r-l+1
         return count
