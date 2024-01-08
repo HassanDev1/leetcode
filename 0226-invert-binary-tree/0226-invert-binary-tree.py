@@ -7,18 +7,14 @@
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         
-        if not root:
-            return
-        q = deque([root])
         
-        while q:
-            node = q.popleft()
-            if node:
-                node.left,node.right = node.right,node.left
-                
-                q.append(node.left)
-                q.append(node.right)
-                
-        return root
+        def postorder(node):
+            if not node:
+                return
+            node.left,node.right = node.right,node.left
+            postorder(node.left)
             
-        
+            postorder(node.right)
+            
+            return node
+        return postorder(root)
