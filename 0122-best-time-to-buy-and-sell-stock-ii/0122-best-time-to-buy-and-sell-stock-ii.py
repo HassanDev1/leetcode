@@ -1,14 +1,14 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
-        max_profit = 0
         stack = []
-        for i,p in enumerate(prices):
+        total = 0
+        
+        for price in prices:
+            if stack and stack[-1] < price:
+                buying_p = stack.pop()
+                total += price - buying_p
+            stack.append(price)
             
-            if stack and stack[-1] < p:
-                prev_price = stack.pop()
-                max_profit += (p - prev_price)
-            stack.append(p)
-            
-        return max_profit
+        return total
         
