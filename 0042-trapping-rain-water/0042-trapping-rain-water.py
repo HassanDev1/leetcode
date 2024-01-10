@@ -1,19 +1,21 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
         
-        l,r =0,len(height)-1
-        left_max = height[0]
-        right_max = height[-1]
-        trapcount = 0
+        trapCount = 0
+        l,r = 0, len(height)-1
+        max_left = height[0]
+        max_right = height[-1]
         
-        while l < r:
+        for i,h in enumerate(height):
             if height[l] < height[r]:
-                left_max = max(left_max,height[l])
-                trapcount += left_max - height[l]
+                max_left = max(max_left,height[l])
+                trapCount += max_left - height[l]
                 l += 1
             else:
-                right_max = max(right_max,height[r])
-                trapcount += right_max - height[r]
+                
+                max_right = max(max_right,height[r])
+                trapCount += max_right- height[r]
                 r -= 1
-        return trapcount
-        
+                
+        return trapCount
+            
