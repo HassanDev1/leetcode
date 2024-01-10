@@ -10,16 +10,16 @@ class Solution:
         
         def dfs(node,path,curr_sum):
             if not node:
-                return 
-            path.append(node.val)
+                return
             curr_sum += node.val
+            path.append(node.val)
             if curr_sum == targetSum and not node.left and not node.right:
                 res.append(path.copy())
+                
             dfs(node.left,path,curr_sum)
             dfs(node.right,path,curr_sum)
+            
             path.pop()
         dfs(root,[],0)
-        
         return res
-                
-                 
+            
