@@ -10,7 +10,7 @@ class Codec:
     def serialize(self, root):
         """Encodes a tree to a single string.
         
-        :type root: TreeNode
+        :type root: TreeNode 
         :rtype: str
         """
         res = []
@@ -33,6 +33,7 @@ class Codec:
         """
         values = data.split(",")
         self.i = 0
+        
         def dfs():
             if values[self.i] == "N":
                 self.i += 1
