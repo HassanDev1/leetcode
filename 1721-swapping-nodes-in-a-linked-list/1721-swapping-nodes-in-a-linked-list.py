@@ -16,9 +16,13 @@ class Solution:
           
         l = k-1
         r = len(nodes)-k
-        nodes[l],nodes[r] = nodes[r],nodes[l]
+        l = nodes[k-1]
+        r = nodes[len(nodes)-k]
+        l,r = r,l
+        nodes[k-1] = l
+        nodes[len(nodes)-k] = r
         
-        new_list = curr = ListNode(0,head)
+        new_list = curr = ListNode()
         for i in nodes:
             curr.next = ListNode(i)
             curr = curr.next
