@@ -13,18 +13,19 @@ class Solution:
                 return
             if node.val == p or node.val == q:
                 return node
-            left_side = get_lca(node.left,p,q)
-            right_side = get_lca(node.right,p,q)
-            if left_side and right_side:
+            ls= get_lca(node.left,p,q)
+            rh = get_lca(node.right,p,q)
+            if ls and rh:
                 return node
-            if left_side:
-                return left_side
-            if right_side:
-                return right_side
+            if ls:
+                return ls
+            if rh:
+                return rh
+            
         root = get_lca(root,startValue,destValue)
-        
-        stack = [(root,"")]
         sp = dp = ""
+        stack = [(root,"")]
+        
         while stack:
             node,path = stack.pop()
             
@@ -38,6 +39,8 @@ class Solution:
             if node.right:
                 stack.append((node.right,path+"R"))
                 
+                
         return "U"*len(sp)+dp
+                
         
         
