@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        
         count = [0]
+        
         def dfs(node,prev):
             if not node:
                 return 0
@@ -16,7 +16,6 @@ class Solution:
                 prev = node.val
             dfs(node.left,prev)
             dfs(node.right,prev)
-            
         dfs(root,root.val)
-        return count[0]
         
+        return count[0]
