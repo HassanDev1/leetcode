@@ -7,14 +7,9 @@
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         
-        
-        def postorder(node):
-            if not node:
-                return
-            node.left,node.right = node.right,node.left
-            postorder(node.left)
-            
-            postorder(node.right)
-            
-            return node
-        return postorder(root)
+        if not root:
+            return
+        root.left,root.right = root.right,root.left
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
