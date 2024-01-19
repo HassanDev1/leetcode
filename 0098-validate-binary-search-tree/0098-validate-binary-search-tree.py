@@ -9,8 +9,7 @@ class Solution:
         
         stack = []
         prev = float("-inf")
-        
-        while root or stack:
+        while stack or root:
             while root:
                 stack.append(root)
                 root = root.left
@@ -20,8 +19,8 @@ class Solution:
                 return False
             prev = root.val
             root = root.right
-            
         return True
+            
                 
             
         
