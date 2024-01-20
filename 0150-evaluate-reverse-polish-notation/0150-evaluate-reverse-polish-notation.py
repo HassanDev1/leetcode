@@ -3,21 +3,24 @@ class Solution:
         
         stack = []
         
-        for c in tokens:
-            if c == "+":
+        for t in tokens:
+            if t == "+":
                 stack.append(stack.pop()+stack.pop())
-            elif c == "*":
+                
+            elif t == "*":
                 stack.append(stack.pop()*stack.pop())
-            elif c == "-":
+                
+            elif t == "-":
                 num1 = stack.pop()
                 num2 = stack.pop()
-                stack.append(num2 - num1)
-            elif c == "/":
+                stack.append(num2-num1)
+            elif t == "/":
                 num1 = stack.pop()
                 num2 = stack.pop()
                 stack.append(int(num2/num1))
+                
             else:
-                stack.append(int(c))
+                stack.append(int(t))
                 
         return stack[-1]
         
