@@ -11,7 +11,7 @@ class Solution:
         def get_lca(node,p,q):
             if not node:
                 return
-            if node == p or node == q:
+            if node == p or node ==q:
                 return node
             ls = get_lca(node.left,p,q)
             rs = get_lca(node.right,p,q)
@@ -22,3 +22,4 @@ class Solution:
             if rs:
                 return rs
         return get_lca(root,p,q)
+        
