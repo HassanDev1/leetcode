@@ -10,12 +10,13 @@ class Solution:
         
         def dfs(node,prev):
             if not node:
-                return 0
+                return
             if prev <= node.val:
                 count[0] += 1
                 prev = node.val
             dfs(node.left,prev)
             dfs(node.right,prev)
+            
         dfs(root,root.val)
-        
         return count[0]
+        
