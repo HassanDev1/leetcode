@@ -9,21 +9,23 @@ class Solution:
         
         
         res = []
-        
-        def dfs(node,path,curr_sum):
-            if not node:
-                return
+        if not root:
+            return
+        stack = [(root,[],0)]
+        curr_sum = 0
+        while stack:
+            node,path,curr_sum = stack.pop()
             
-            path.append(node.val)
             curr_sum += node.val
             if curr_sum == targetSum and not node.left and not node.right:
-                res.append(path.copy())
+                path.append(node.val)
+                res.append(path)
                 
-            dfs(node.left,path,curr_sum)
-            dfs(node.right,path,curr_sum)
-            path.pop()
-            
-        dfs(root,[],0)
+            if node.left:
+                stack.append((node.left,path+[node.val],curr_sum))
+            if node.right:
+                stack.append((node.right,path+[node.val],curr_sum))
+                
         return res
             
     
