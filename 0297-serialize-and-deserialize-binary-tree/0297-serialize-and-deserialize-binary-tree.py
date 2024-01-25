@@ -21,6 +21,7 @@ class Codec:
             res.append(str(node.val))
             dfs(node.left)
             dfs(node.right)
+            
         dfs(root)
         return ",".join(res)
         
@@ -33,7 +34,6 @@ class Codec:
         """
         values = data.split(",")
         self.i = 0
-        
         def dfs():
             if values[self.i] == "N":
                 self.i += 1
@@ -45,6 +45,7 @@ class Codec:
             return node
         return dfs()
             
+        
         
 
 # Your Codec object will be instantiated and called as such:
