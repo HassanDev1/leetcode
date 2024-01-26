@@ -8,18 +8,20 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
-        def get_lca(node,p,q):
+        def dfs(node,n1,n2):
             if not node:
                 return
-            if node == p or node ==q:
+            if node == n1 or node == n2:
                 return node
-            ls = get_lca(node.left,p,q)
-            rs = get_lca(node.right,p,q)
-            if ls and rs:
+            ln = dfs(node.left,n1,n2)
+            rn = dfs(node.right,n1,n2)
+            
+            if ln and rn:
                 return node
-            if ls:
-                return ls
-            if rs:
-                return rs
-        return get_lca(root,p,q)
-        
+            if ln: return ln
+            if rn: return rn
+            
+        return dfs(root,p,q)
+    
+    
+    
