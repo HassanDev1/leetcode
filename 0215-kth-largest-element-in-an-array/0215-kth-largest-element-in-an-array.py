@@ -8,3 +8,4 @@ class Solution:
                 heappop(heap)
                 
         return heap[0]
+        
