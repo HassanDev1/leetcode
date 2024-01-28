@@ -4,20 +4,19 @@ class Solution:
         for count,char in [(a,"a"),(b,"b"),(c,"c")]:
             if count != 0:
                 heappush(heap,(-count,char))
+              
+        res = []
                 
-        res = []      
         while heap:
             count,char = heappop(heap)
-            
             if len(res) > 1 and res[-1] == res[-2] == char:
                 if not heap:
                     break
-                count1,char1 = heappop(heap)
-                count1 += 1
-                res.append(char1)
-                if count1:
-                    heappush(heap,(count1,char1))
-                    
+                count2,char2 = heappop(heap)
+                res.append(char2)
+                count2 += 1
+                if count2:
+                    heappush(heap,(count2,char2))
             else:
                 res.append(char)
                 count += 1
@@ -25,7 +24,10 @@ class Solution:
                 heappush(heap,(count,char))
                 
         return "".join(res)
+                    
                 
             
             
+                
+        
         
