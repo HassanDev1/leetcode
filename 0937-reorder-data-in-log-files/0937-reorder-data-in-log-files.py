@@ -2,17 +2,16 @@ class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
         
         
-        letter_dig = defaultdict(list)
-        letter_logs = []
-        digit_logs = []
+        let = []
+        dig = []
+        
         for log in logs:
             if log.split(' ')[1].isdigit():
-                digit_logs.append(log)
+                dig.append(log)
             else:
-                letter_logs.append(log)
+                let.append(log)
                 
                 
-        letter_logs.sort(key=lambda x: (x.split(' ')[1:], x.split(' ')[0]))
-        return letter_logs + digit_logs
-                
+        let.sort(key=lambda x:(x.split(' ')[1:],x.split(' ')[0]))
         
+        return let+dig
