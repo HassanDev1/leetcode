@@ -14,8 +14,6 @@ class Solution:
             curr = curr.next
             
         left = k-1
-        right = len(nodes)-k
-        
+        right = -k
         nodes[left].val,nodes[right].val = nodes[right].val,nodes[left].val
-        
         return head
