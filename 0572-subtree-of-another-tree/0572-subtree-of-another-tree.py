@@ -7,15 +7,14 @@
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         
-        def is_same(p,q):
+        def isSame(p,q):
             if not p and not q:
                 return True
-            
-            if not p and q or not q and p:
+            if not p and q or p and not q:
                 return False
             if p and q and p.val != q.val:
                 return False
-            return is_same(p.left,q.left) and is_same(p.right,q.right)
+            return isSame(p.left,q.left) and isSame(p.right,q.right)
         
         q = deque([root])
         
@@ -24,13 +23,13 @@ class Solution:
             
             for _ in range(size):
                 node = q.popleft()
-                if is_same(node,subRoot):
+                
+                if isSame(node,subRoot):
                     return True
-                if  node.left:
+                if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
                     
         return False
-            
         
