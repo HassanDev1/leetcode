@@ -9,7 +9,18 @@ class Solution:
         
         if not root:
             return
-        root.left,root.right = root.right,root.left
-        self.invertTree(root.left)
-        self.invertTree(root.right)
+        q = deque([root])
+        
+        while q:
+            size = len(q)
+            
+            for _ in range(size):
+                node = q.popleft()
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+                node.left,node.right = node.right,node.left
+                    
+                    
         return root
