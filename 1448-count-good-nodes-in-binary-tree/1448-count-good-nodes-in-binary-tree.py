@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        count = [0]
         
+        count = [0]
         def dfs(node,prev):
             if not node:
                 return
