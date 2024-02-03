@@ -1,15 +1,12 @@
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
-        balloon_count = Counter({key:0 for key in "balon"})
+        balon_freq = {"b":0,"a":0,"l":0,"o":0,"n":0}
         
-        for char in text:
-            if char in balloon_count:
-                balloon_count[char] += 1
-            
-        balloon_count["l"] //=2
-        balloon_count["o"] //= 2
-        
-        return min(balloon_count.values())
-                                
-                                
-                    
+        for c in text:
+            if c in balon_freq:
+                balon_freq[c] += 1
+                
+        balon_freq["l"] //= 2
+        balon_freq["o"] //= 2
+    
+        return min(balon_freq.values())
