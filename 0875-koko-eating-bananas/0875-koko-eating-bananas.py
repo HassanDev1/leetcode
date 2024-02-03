@@ -8,15 +8,13 @@ class Solution:
             if total > h:
                 return True
             return False
-            
-        l,r =1,max(piles)
         
+        l,r = 1,max(piles)
         while l < r:
-            mid = l+ (r-l)//2
+            mid = l + (r-l)//2
+            
             if compare(mid):
                 l = mid + 1
             else:
                 r = mid
-                
         return l
-        
