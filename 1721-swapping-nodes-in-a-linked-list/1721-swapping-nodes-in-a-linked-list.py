@@ -6,14 +6,14 @@
 class Solution:
     def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         
-        
         nodes = []
         curr = head
         while curr:
             nodes.append(curr)
             curr = curr.next
             
-        left = k-1
-        right = -k
-        nodes[left].val,nodes[right].val = nodes[right].val,nodes[left].val
+        l = k-1
+        r = len(nodes)-k
+        
+        nodes[l].val,nodes[r].val = nodes[r].val,nodes[l].val
         return head
