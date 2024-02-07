@@ -11,10 +11,10 @@ class Solution:
         def dfs(node):
             if not node:
                 return 0
-            left_gain = max(0,dfs(node.left))
-            right_gain = max(0,dfs(node.right))
-            path = node.val + left_gain + right_gain
+            ls=  max(0,dfs(node.left))
+            rs = max(0,dfs(node.right))
+            path = node.val + ls + rs
             max_sum[0] = max(max_sum[0],path)
-            return node.val + max(left_gain,right_gain)
+            return node.val + max(ls,rs)
         dfs(root)
         return max_sum[0]
