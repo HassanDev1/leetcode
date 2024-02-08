@@ -7,8 +7,7 @@ class Solution:
             if c in balon_freq:
                 balon_freq[c] += 1
                 
-        balon_freq["l"] //=2
-        balon_freq["o"] //=2
+        balon_freq["l"] //= 2
+        balon_freq["o"] //= 2
         
         return min(balon_freq.values())
-        
