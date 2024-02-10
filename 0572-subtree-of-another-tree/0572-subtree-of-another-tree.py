@@ -6,15 +6,14 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        
-        def isSame(p,q):
-            if not p and not q:
+        def is_same(node1,node2):
+            if not node1 and not node2:
                 return True
-            if not p and q or p and not q:
+            if node1 and not node2 or node2 and not node1:
                 return False
-            if p and q and p.val != q.val:
+            if node1 and node2 and node1.val != node2.val:
                 return False
-            return isSame(p.left,q.left) and isSame(p.right,q.right)
+            return is_same(node1.left,node2.left) and is_same(node1.right,node2.right)
         
         q = deque([root])
         
@@ -24,7 +23,7 @@ class Solution:
             for _ in range(size):
                 node = q.popleft()
                 
-                if isSame(node,subRoot):
+                if is_same(node,subRoot):
                     return True
                 if node.left:
                     q.append(node.left)
@@ -32,4 +31,3 @@ class Solution:
                     q.append(node.right)
                     
         return False
-        
