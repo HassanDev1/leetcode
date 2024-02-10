@@ -1,7 +1,9 @@
 class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
         
-        dig,let = [],[]
+        dig = []
+        let = []
+        
         for log in logs:
             if log.split(" ")[1].isdigit():
                 dig.append(log)
