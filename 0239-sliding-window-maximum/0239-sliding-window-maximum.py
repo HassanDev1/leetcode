@@ -3,15 +3,18 @@ class Solution:
         
         q = deque()
         res = []
-        for r in range(len(nums)):
-            while q and q[0] < r-k+1:
+        
+        for i in range(len(nums)):
+            while q and q[0] < i-k+1:
                 q.popleft()
-            while q and nums[q[-1]] < nums[r]:
+                
+            while q and nums[q[-1]] < nums[i]:
                 q.pop()
                 
-            q.append(r)
+            q.append(i)
             
-            if r >= k-1:
+            if i >= k-1:
                 res.append(nums[q[0]])
                 
         return res
+                
