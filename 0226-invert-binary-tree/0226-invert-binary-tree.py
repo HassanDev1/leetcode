@@ -16,11 +16,12 @@ class Solution:
             
             for _ in range(size):
                 node = q.popleft()
+                
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
+                    
                 node.left,node.right = node.right,node.left
-                    
-                    
+                
         return root
