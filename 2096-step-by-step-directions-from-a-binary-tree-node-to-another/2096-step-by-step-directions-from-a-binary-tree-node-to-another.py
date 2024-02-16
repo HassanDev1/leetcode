@@ -7,35 +7,37 @@
 class Solution:
     def getDirections(self, root: Optional[TreeNode], startValue: int, destValue: int) -> str:
         
+        
         def lca(node,p,q):
             if not node:
                 return
-            if node.val ==p or node.val == q:
+            if node.val == p or node.val == q:
                 return node
-            ls = lca(node.left,p,q)
-            rs =lca(node.right,p,q)
-            if ls and rs:
+            ln = lca(node.left,p,q)
+            rn = lca(node.right,p,q)
+            if ln and rn:
                 return node
-            if ls: return ls
-            if rs: return rs
+            if ln: return ln
+            if rn: return rn
+            
         root = lca(root,startValue,destValue)
+        sp=dp =""
         
-        stack = [(root,"")]
-        sp,dp = "",""
+        q = deque([(root,"")])
         
-        while stack:
-            node,path = stack.pop()
+        while q:
+            size = len(q)
             
-            if node.val == startValue:
-                sp = path
-            if node.val == destValue:
-                dp = path
+            for _ in range(size):
+                node,path = q.popleft()
                 
-            if node.left:
-                stack.append((node.left,path+"L"))
-            if node.right:
-                stack.append((node.right,path+"R"))
-                
+                if node.val == startValue:
+                    sp = path
+                if node.val == destValue:
+                    dp = path
+                if node.left:
+                    q.append((node.left,path+"L"))
+                if node.right:
+                    q.append((node.right,path+"R"))
+                    
         return "U"*len(sp)+dp
-            
-            
