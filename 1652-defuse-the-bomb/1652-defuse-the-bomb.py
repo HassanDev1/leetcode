@@ -6,14 +6,14 @@ class Solution:
             res = [0]*len(code)
             return res
         
-        
-        for i in range(len(code)):
+        for i in range (len(code)):
             if k > 0:
                 m = k
                 j = i+1
                 curr_sum = 0
                 while m:
                     curr_sum += code[j%len(code)]
+                   
                     j += 1
                     m -= 1
                 res.append(curr_sum)
@@ -21,12 +21,14 @@ class Solution:
                 m = k
                 j = i-1
                 curr_sum = 0
-                
                 while m:
                     curr_sum += code[j%len(code)]
+                    
                     j -= 1
                     m += 1
                 res.append(curr_sum)
-        return res
+                    
                 
+        return res
+                    
         
