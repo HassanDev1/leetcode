@@ -1,39 +1,39 @@
 class TrieNode:
     def __init__(self):
         self.children = {}
-        self.pref_count = 0
-        
+        self.prefix_count = 0
 class Trie:
     def __init__(self):
         self.root = TrieNode()
         
-    def addWord(self, word):
+    def add_word(self,word):
         curr = self.root
         for c in word:
             if c not in curr.children:
                 curr.children[c] = TrieNode()
             curr = curr.children[c]
-            curr.pref_count += 1
-            
-    def searchWord(self,word):
+            curr.prefix_count += 1
+    
+    def getScore(self,word):
         curr = self.root
         score = 0
+        
         for c in word:
             curr = curr.children[c]
-            score += curr.pref_count
+            score += curr.prefix_count
+            
         return score
+            
 class Solution:
     def sumPrefixScores(self, words: List[str]) -> List[int]:
-        res = []
         
-        prefix = Trie()
+        trie = Trie()
         
         for word in words:
-            prefix.addWord(word)
+            trie.add_word(word)
             
+        res = []
         for word in words:
-            count = prefix.searchWord(word)
-            res.append(count)
+            res.append(trie.getScore(word))
             
         return res
-            
