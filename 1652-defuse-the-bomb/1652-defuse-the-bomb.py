@@ -7,7 +7,7 @@ class Solution:
             res = [0]*len(code)
             return res
         
-        for i in range(len(code)):
+        for i in range(len(code)):  #O(n)
             if k > 0:
                 m = k
                 j = i+1
