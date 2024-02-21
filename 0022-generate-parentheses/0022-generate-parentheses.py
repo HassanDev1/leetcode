@@ -1,19 +1,24 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        res = []
+        
         stack = []
-        def dfs(count_op,count_cl):
-            if count_op == count_cl == n:
+        res = []
+        def dfs(opened,closed):
+            if opened == closed == n:
                 res.append("".join(stack))
                 return
-            if count_op < n:
+            if opened < n:
                 stack.append("(")
-                dfs(count_op+1,count_cl)
+                dfs(opened+1,closed)
                 stack.pop()
-            if count_cl < count_op:
+                
+            if closed < opened:
                 stack.append(")")
-                dfs(count_op,count_cl+1)
+                dfs(opened,closed+1)
                 stack.pop()
-            
         dfs(0,0)
         return res
+                
+        
+                
+        
