@@ -14,6 +14,7 @@ class MinStack:
         popped = self.stack.pop()
         if self.min_stack and self.min_stack[-1] == popped:
             self.min_stack.pop()
+        
 
     def top(self) -> int:
         return self.stack[-1]
