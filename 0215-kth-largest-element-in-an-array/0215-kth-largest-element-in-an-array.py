@@ -4,10 +4,10 @@ class Solution:
         
         heap = []
         for num in nums:
-            heappush(heap,-num)
+            heappush(heap,num)
+            if len(heap) > k:
+                heappop(heap)
             
-            
-        for _ in range(k-1):
-            heappop(heap)
-        return -heap[0]
+        
+        return heap[0]
         
