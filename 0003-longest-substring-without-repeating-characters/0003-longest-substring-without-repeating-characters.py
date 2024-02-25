@@ -7,17 +7,13 @@ class Solution:
         longest = 0
         
         for r in range(len(s)):
-            while s[r] in window:
-                
-                
-                if window[s[l]] == 1:
-                    del window[s[l]]
-                else:
-                    window[s[l]] -= 1
-                l += 1
-                
+            if s[r] in window:
+                l = max(l,window[s[r]]+1)
             longest = max(longest,r-l+1)
-            window[s[r]] += 1
+            window[s[r]] = r
+            
+            
+            
             
         return longest
         
