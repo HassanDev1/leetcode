@@ -14,5 +14,6 @@ class Solution:
                 newInterval[0] = min(newInterval[0],interval[0])
                 newInterval[1] = max(newInterval[1],interval[1])
                 
-        return left + [newInterval] + right
+        return left + [newInterval]+right
+            
         
