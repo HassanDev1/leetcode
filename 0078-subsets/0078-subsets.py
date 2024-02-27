@@ -1,12 +1,12 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
         output = []
+        
         def dfs(i,res):
             if i == len(nums):
-                
                 output.append(res.copy())
-                return
+                return 1
+            
             res.append(nums[i])
             
             dfs(i+1,res)
@@ -15,6 +15,3 @@ class Solution:
             
         dfs(0,[])
         return output
-        
-        
-        
