@@ -7,8 +7,16 @@
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         
-        if not root:
-            return 0
-        lh = self.maxDepth(root.left)
-        rh = self.maxDepth(root.right)
-        return 1 + max(lh,rh)
+      
+        def get_path(node):
+            if not node:
+                return 0
+            
+            left_path = get_path(node.left)
+            right_path = get_path(node.right)
+            curr = left_path+right_path
+            
+           
+            return 1 + max(left_path,right_path)
+        return get_path(root)
+       
