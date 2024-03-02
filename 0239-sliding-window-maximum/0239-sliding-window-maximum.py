@@ -3,12 +3,11 @@ class Solution:
         
         q = deque()
         res = []
-        
         for r in range(len(nums)):
             while q and q[0] < r-k+1:
                 q.popleft()
                 
-            while q and nums[q[-1]] <= nums[r]:
+            while q and nums[q[-1]] < nums[r]:
                 q.pop()
                 
             q.append(r)
@@ -17,3 +16,7 @@ class Solution:
                 res.append(nums[q[0]])
                 
         return res
+                
+                
+            
+        
