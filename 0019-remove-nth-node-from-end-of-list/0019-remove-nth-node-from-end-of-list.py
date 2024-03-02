@@ -13,12 +13,12 @@ class Solution:
             curr = curr.next
             
         nodes.pop(-n)
-        if not nodes:
-            return None
         
-        new_list = curr = ListNode(0,head)
+        new_list = curr = ListNode()
+        
         for node in nodes:
             curr.next = ListNode(node)
             curr = curr.next
-        
+            
         return new_list.next
+        
