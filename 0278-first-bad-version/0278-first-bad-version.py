@@ -4,13 +4,13 @@
 class Solution:
     def firstBadVersion(self, n: int) -> int:
         
-        l,r=1,n
+        
+        l,r = 0,n
         while l < r:
-            mid = l+(r-l)//2
-            
+            mid = l + (r-l)//2
             if isBadVersion(mid):
                 r = mid
             else:
-                l = mid +1
+                l = mid+1
+                
         return l
-        
