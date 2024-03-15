@@ -9,4 +9,5 @@ class Solution:
             while stack and stack[-1] == popped[j]:
                 stack.pop()
                 j += 1
+                
         return not stack
