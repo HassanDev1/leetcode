@@ -4,8 +4,15 @@ class Solution:
         
         heap = []
         for num in nums:
-            heappush(heap,num)
-            if len(heap) > k:
-                heappop(heap)
+            heappush(heap,-num)
+        
+        res = []
+        while len(heap):
+            res.append(heappop(heap))
+            if len(res) == k:
+                break
                 
-        return heap[0] if heap else 0
+        return -res[-1]
+            
+        
+            
