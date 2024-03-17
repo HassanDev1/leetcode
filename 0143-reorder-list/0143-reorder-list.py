@@ -8,18 +8,19 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        curr = head
         nodes = []
-        
+        curr =head
         while curr:
             nodes.append(curr)
             curr = curr.next
             
-        l,r = 0, len(nodes)-1
-        while l< r:
+        l,r = 0,len(nodes)-1
+        
+        while l < r:
             nodes[l].next = nodes[r]
             l += 1
             nodes[r].next = nodes[l]
             r -= 1
             
         nodes[l].next = None
+            
