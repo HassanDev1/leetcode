@@ -6,38 +6,36 @@
 #         self.right = right
 class Solution:
     def getDirections(self, root: Optional[TreeNode], startValue: int, destValue: int) -> str:
-        
-        
-        def lca(node,p,q):
+        def get_lca(node,p,q):
             if not node:
                 return
             if node.val == p or node.val == q:
                 return node
-            ln = lca(node.left,p,q)
-            rn = lca(node.right,p,q)
-            if ln and rn:
+            l = get_lca(node.left,p,q)
+            r = get_lca(node.right,p,q)
+            if l and r:
                 return node
-            if ln: return ln
-            if rn: return rn
+            if l:
+                return l
+            if r:
+                return r
             
-        root = lca(root,startValue,destValue)
-        sp=dp =""
+        root = get_lca(root,startValue,destValue)
+        sp = dp = ""
+        stack = [("",root)]
         
-        q = deque([(root,"")])
-        
-        while q:
-            size = len(q)
+        while stack:
+            path,node = stack.pop()
             
-            for _ in range(size):
-                node,path = q.popleft()
+            if node.val == startValue:
+                sp = path
+            if node.val ==destValue:
+                dp = path
+            if node.left:
+                stack.append((path+"L",node.left))
+            if node.right:
+                stack.append((path+"R",node.right))
                 
-                if node.val == startValue:
-                    sp = path
-                if node.val == destValue:
-                    dp = path
-                if node.left:
-                    q.append((node.left,path+"L"))
-                if node.right:
-                    q.append((node.right,path+"R"))
-                    
-        return "U"*len(sp)+dp
+        return len(sp)*"U" + dp
+            
+            
