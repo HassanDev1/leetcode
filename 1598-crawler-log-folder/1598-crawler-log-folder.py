@@ -1,16 +1,19 @@
 class Solution:
     def minOperations(self, logs: List[str]) -> int:
-        stack = []
+        depth = [0]
         
-        for log in logs:
-            if log == "./":
-                continue
-            elif log == "../":
-                if stack:
-                    stack.pop()
+        def helper(i):
+            if i >= len(logs):
+                return
+            if logs[i] == "./":
+                pass
+            elif logs[i] == "../":
+                if depth[0] > 0:
+                    depth[0] -= 1
             else:
-                stack.append(log)
+                depth[0] += 1
                 
-                
-        return len(stack)
+            helper(i+1)
+        helper(0)
+        return depth[0]
         
