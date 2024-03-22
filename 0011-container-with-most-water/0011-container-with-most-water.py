@@ -1,21 +1,18 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         
-        most_water = float("-inf")
-        l,r =0,len(height)-1
-        left_height = height[0]
-        right_height = height[r]
+        max_area = 0
+        l,r = 0,len(height)-1
         
         while l < r:
-            if left_height < right_height:
-                most_water = max((r-l)*min(left_height,right_height),most_water)
-                
-                l +=1
-                left_height = height[l]
+            if height[l] < height[r]:
+                area = (r-l)*min(height[l],height[r])
+                max_area = max(area,max_area)
+                l += 1
             else:
-                most_water = max((r-l)*min(left_height,right_height),most_water)
-                r-= 1
-                right_height = height[r]
+                area = (r-l)*min(height[l],height[r])
+                max_area = max(area,max_area)
+                r -= 1
                 
-        return most_water
-            
+        return max_area
+                
