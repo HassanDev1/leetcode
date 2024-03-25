@@ -1,5 +1,6 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
+        
         trapped = 0
         
         l = 0
@@ -18,5 +19,4 @@ class Solution:
                 r -= 1
                 
         return trapped
-                
                 
