@@ -1,6 +1,5 @@
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        
         q = deque()
         res = []
         for r in range(len(nums)):
@@ -16,7 +15,4 @@ class Solution:
                 res.append(nums[q[0]])
                 
         return res
-                
-                
-            
         
