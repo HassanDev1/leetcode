@@ -1,6 +1,5 @@
 class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
-        
         freq = {"a":a,"b":b,"c":c}
         heap = []
         
@@ -32,3 +31,4 @@ class Solution:
                 heappush(heap,(count,char))
             res.append(char)
         return "".join(res)
+        
