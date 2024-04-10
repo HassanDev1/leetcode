@@ -9,11 +9,11 @@ class Solution:
                 row[l],row[r] = row[r],row[l]
                 l += 1
                 r -= 1
-        
-        for r in range(len(image)):
-            for c in range(len(image[0])):
-                if image[r][c] == 1:
-                    image[r][c] = 0
+            for i,item in enumerate(row):
+                if item == 1:
+                    row[i] = 0
                 else:
-                    image[r][c] = 1
+                    row[i] = 1
+        
+        
         return image
