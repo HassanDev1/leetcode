@@ -1,24 +1,22 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        m = len(grid)
-        n = len(grid[0])
-        count = 0
         
-        def helper(r,c):
-            q = deque([(r,c)])
+        def dfs(row,col,visited):
+            if  row < 0 or row > len(grid)-1 or col <0 or col > len(grid[0])-1 or grid[row][col] == "0" or (row,col) in visited:
+                return
             
-            while q:
-                row,col = q.popleft()
-                for i,j in [(row+1,col),(row-1,col),(row,col-1),(row,col+1)]:
-                    if 0 <= i < m and 0 <= j < n and grid[i][j] == "1":
-                        grid[i][j] = "0"
-                        q.append((i,j))
-        for r in range(m):
-            for c in range(n):
-                if grid[r][c] == "1":
-                    grid[r][c] = "0"
-                    helper(r,c)
+            visited.add((row,col))
+            dfs(row-1,col,visited)
+            dfs(row+1,col,visited)
+            dfs(row,col-1,visited)
+            dfs(row,col+1,visited)
+        
+        
+        count = 0
+        visited = set()
+        for r in range(len(grid)):
+            for c in range(len(grid[0])):
+                if grid[r][c] == "1" and (r,c) not in visited:
+                    dfs(r,c,visited)
                     count += 1
         return count
-
-        
