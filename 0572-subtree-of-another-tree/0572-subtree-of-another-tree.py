@@ -6,15 +6,15 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        def is_same(p,q):
+        
+        def isIdentical(p,q):
             if not p and not q:
                 return True
-            if (p and not q) or (q and not p):
+            if p and not q or not p and q:
                 return False
             if p and q and p.val != q.val:
                 return False
-            return is_same(p.left,q.left) and is_same(p.right,q.right)
-        
+            return isIdentical(p.left,q.left) and isIdentical(p.right,q.right)
         q = deque([root])
         
         while q:
@@ -22,13 +22,11 @@ class Solution:
             
             for _ in range(size):
                 node = q.popleft()
-                
-                if is_same(node,subRoot):
-                    return True
-                if node.left:
+                if node:
+                    if isIdentical(node,subRoot):
+                        return True
                     q.append(node.left)
-                if node.right:
                     q.append(node.right)
                     
-        return False
+                
         
