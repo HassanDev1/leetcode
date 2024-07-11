@@ -1,11 +1,19 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        res = [c.lower() for c in s if c.isalnum()]
         
-        l,r =0,len(res)-1
-        while l < r:
-            if res[l] != res[r]:
+        palindrome = []
+        
+        for c in s:
+            if c.isalnum():
+                palindrome.append(c.lower())
+                
+        i,j=0,len(palindrome)-1
+        
+        while i < j:
+            if palindrome[i] != palindrome[j]:
                 return False
-            l += 1
-            r -= 1
+            i += 1
+            j -= 1
+            
         return True
+        
