@@ -1,8 +1,8 @@
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         
-        heap = []
         res = []
+        heap = []
         
         for i in range(k):
             heappush(heap,(-nums[i],i))
@@ -16,7 +16,9 @@ class Solution:
             heappush(heap,(-nums[i],i))
             res.append(heap[0][0])
             
+            
         for i in range(len(res)):
             res[i] = -1*res[i]
+            
         return res
         
