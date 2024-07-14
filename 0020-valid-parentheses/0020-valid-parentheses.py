@@ -1,7 +1,6 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         
-        freq = {"(":")","[":"]","{":"}"}
         
         stack = []
         
@@ -11,7 +10,7 @@ class Solution:
             elif not stack and c in ")]}":
                 return False
             else:
-                if stack and stack[-1] == "(" and c != ")" or stack[-1] == "[" and c != "]" or stack[-1] == "{" and c != "}" :
+                if stack and c == ")" and stack[-1] != "(" or c == "]" and stack[-1] != "[" or c == "}" and stack[-1] != "{":
                     return False
                 
                 stack.pop()
