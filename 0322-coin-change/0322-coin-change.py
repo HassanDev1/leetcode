@@ -10,8 +10,8 @@ class Solution:
                 return memo[amount]
             min_coins = float("inf")
             for coin in coins:
-                ans = helper(amount-coin)+1
-                min_coins = min(ans,min_coins)
+               
+                min_coins = min(helper(amount-coin)+1,min_coins)
                 
             memo[amount] = min_coins
             return min_coins
